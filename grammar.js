@@ -25,6 +25,15 @@ module.exports = grammar({
                     seq($.string, repeat(seq(',', $.string))),
                 )),
             ),
+
+        // _indent: $ => /    /,
+
+        block: $ =>
+            choice(
+                seq('diff', 'lol'),
+                seq('kiss', 'me'),
+        ),
+
         label: $ => seq($.ident, ':', optional(seq('(', $.ident, ')'))),
         instruction: $ => seq(field('kind', $.word), sep(',', $._expr)),
 
