@@ -28,7 +28,12 @@ module.exports = grammar({
 
         // _indent: $ => /[ ]{4}/,
 
-        // block_me: $ => seq($.word, '@', $.word, '@'),
+        // loop_block: $ => choice(
+        //     // seq($.label, repeat($.instruction)),
+        //     seq($.label, repeat('daniel')),
+        //     // prec.left(seq($.label, repeat(seq(repeat('\n'), '\t', $.instruction)))),
+        //     // seq($.instruction),
+        // ),
 
         label: $ => seq($.ident, ':', optional(seq('(', $.ident, ')'))),
         instruction: $ => seq(field('kind', $.word), sep(',', $._expr)),
