@@ -259,10 +259,6 @@
     "named": false
   },
   {
-    "type": "something",
-    "named": false
-  },
-  {
     "type": "string",
     "named": true
   },
