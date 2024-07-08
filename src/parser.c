@@ -16,29 +16,29 @@
 #define PRODUCTION_ID_COUNT 1
 
 enum ts_symbol_identifiers {
-  anon_sym_COLON_COLON = 1,
+  anon_sym_COLON = 1,
   sym_word = 2,
   sym_line_comment = 3,
   sym_block_comment = 4,
-  sym_block = 5,
+  sym_block_me = 5,
 };
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [anon_sym_COLON_COLON] = "::",
+  [anon_sym_COLON] = ":",
   [sym_word] = "word",
   [sym_line_comment] = "line_comment",
   [sym_block_comment] = "block_comment",
-  [sym_block] = "block",
+  [sym_block_me] = "block_me",
 };
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [anon_sym_COLON_COLON] = anon_sym_COLON_COLON,
+  [anon_sym_COLON] = anon_sym_COLON,
   [sym_word] = sym_word,
   [sym_line_comment] = sym_line_comment,
   [sym_block_comment] = sym_block_comment,
-  [sym_block] = sym_block,
+  [sym_block_me] = sym_block_me,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -46,7 +46,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [anon_sym_COLON_COLON] = {
+  [anon_sym_COLON] = {
     .visible = true,
     .named = false,
   },
@@ -62,7 +62,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_block] = {
+  [sym_block_me] = {
     .visible = true,
     .named = true,
   },
@@ -89,25 +89,25 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(5);
+      if (eof) ADVANCE(4);
       if (lookahead == '/') ADVANCE(1);
-      if (lookahead == ':') ADVANCE(4);
-      if (lookahead == ';') ADVANCE(8);
+      if (lookahead == ':') ADVANCE(5);
+      if (lookahead == ';') ADVANCE(7);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(0);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(7);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(6);
       END_STATE();
     case 1:
       if (lookahead == '*') ADVANCE(3);
-      if (lookahead == '/') ADVANCE(8);
+      if (lookahead == '/') ADVANCE(7);
       END_STATE();
     case 2:
       if (lookahead == '*') ADVANCE(2);
-      if (lookahead == '/') ADVANCE(9);
+      if (lookahead == '/') ADVANCE(8);
       if (lookahead != 0) ADVANCE(3);
       END_STATE();
     case 3:
@@ -115,27 +115,24 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead != 0) ADVANCE(3);
       END_STATE();
     case 4:
-      if (lookahead == ':') ADVANCE(6);
-      END_STATE();
-    case 5:
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
-    case 6:
-      ACCEPT_TOKEN(anon_sym_COLON_COLON);
+    case 5:
+      ACCEPT_TOKEN(anon_sym_COLON);
       END_STATE();
-    case 7:
+    case 6:
       ACCEPT_TOKEN(sym_word);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(7);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(6);
       END_STATE();
-    case 8:
+    case 7:
       ACCEPT_TOKEN(sym_line_comment);
       if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(8);
+          lookahead != '\n') ADVANCE(7);
       END_STATE();
-    case 9:
+    case 8:
       ACCEPT_TOKEN(sym_block_comment);
       END_STATE();
     default:
@@ -154,14 +151,14 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [0] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [anon_sym_COLON_COLON] = ACTIONS(1),
+    [anon_sym_COLON] = ACTIONS(1),
     [sym_word] = ACTIONS(1),
     [sym_line_comment] = ACTIONS(3),
     [sym_block_comment] = ACTIONS(3),
   },
   [1] = {
-    [sym_block] = STATE(3),
-    [anon_sym_COLON_COLON] = ACTIONS(5),
+    [sym_block_me] = STATE(3),
+    [anon_sym_COLON] = ACTIONS(5),
     [sym_line_comment] = ACTIONS(3),
     [sym_block_comment] = ACTIONS(3),
   },
@@ -201,7 +198,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
   [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
   [9] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
-  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_block, 2, 0, 0),
+  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_block_me, 2, 0, 0),
 };
 
 #ifdef __cplusplus

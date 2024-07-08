@@ -1,12 +1,12 @@
 {
   "name": "asm",
   "rules": {
-    "block": {
+    "block_me": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "::"
+          "value": ":"
         },
         {
           "type": "SYMBOL",

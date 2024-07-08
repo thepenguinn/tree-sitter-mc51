@@ -1,6 +1,6 @@
 [
   {
-    "type": "block",
+    "type": "block_me",
     "named": true,
     "fields": {},
     "children": {
@@ -15,7 +15,7 @@
     }
   },
   {
-    "type": "::",
+    "type": ":",
     "named": false
   },
   {
