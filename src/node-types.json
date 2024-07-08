@@ -15,21 +15,6 @@
     }
   },
   {
-    "type": "reg",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "word",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "::",
     "named": false
   },
@@ -39,10 +24,6 @@
   },
   {
     "type": "line_comment",
-    "named": true
-  },
-  {
-    "type": "meta_ident",
     "named": true
   },
   {
