@@ -207,6 +207,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -252,6 +256,10 @@
   },
   {
     "type": "rel",
+    "named": false
+  },
+  {
+    "type": "something",
     "named": false
   },
   {

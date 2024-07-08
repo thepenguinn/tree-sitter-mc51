@@ -28,7 +28,7 @@ module.exports = grammar({
 
         // _indent: $ => /    /,
 
-        // block: $ => seq($.ident, '?', '::'),
+        block: $ => seq('::', 'something'),
 
         label: $ => seq($.ident, ':', optional(seq('(', $.ident, ')'))),
         instruction: $ => seq(field('kind', $.word), sep(',', $._expr)),
