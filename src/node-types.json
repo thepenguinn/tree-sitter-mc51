@@ -207,6 +207,10 @@
     "named": false
   },
   {
+    "type": "?",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -223,10 +227,6 @@
     "named": false
   },
   {
-    "type": "diff",
-    "named": false
-  },
-  {
     "type": "dword",
     "named": false
   },
@@ -239,20 +239,8 @@
     "named": true
   },
   {
-    "type": "kiss",
-    "named": false
-  },
-  {
     "type": "line_comment",
     "named": true
-  },
-  {
-    "type": "lol",
-    "named": false
-  },
-  {
-    "type": "me",
-    "named": false
   },
   {
     "type": "meta_ident",

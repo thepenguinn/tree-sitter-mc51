@@ -175,33 +175,15 @@
       ]
     },
     "block": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "diff"
-            },
-            {
-              "type": "STRING",
-              "value": "lol"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "ident"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "kiss"
-            },
-            {
-              "type": "STRING",
-              "value": "me"
-            }
-          ]
+          "type": "STRING",
+          "value": "?"
         }
       ]
     },
